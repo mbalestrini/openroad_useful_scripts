@@ -1,0 +1,42 @@
+
+if { ![info exists ::env(OPENROAD_SCRIPTS_PATH)] } {
+	puts "OPENROAD_SCRIPTS_PATH not set."
+	puts "Define this environment variable to load all the scripts in that path when 'openroad -gui' starts"	
+
+} else {
+
+	set or_load_scripts_path $::env(OPENROAD_SCRIPTS_PATH)
+
+	proc load_dir_scripts {path} {
+		puts "Load scripts from dir $path"
+		
+		if [file isdirectory $path] {
+			set dir_items [glob -nocomplain $path/*]
+			set dir_items [lsort $dir_items]
+			foreach item $dir_items {
+				puts $item
+				if [file isdirectory $item] {				
+					load_dir_scripts $item
+				} else {
+					if {[file extension $item]==".tcl"} {
+						puts "Loading script $item"
+						source $item
+					}				
+				}
+				
+			}
+			
+		}
+
+	}
+
+	if [gui::enabled] {
+
+		if {![file isdirectory $or_load_scripts_path]} {
+			puts "OPENROAD_SCRIPTS_PATH = '$or_load_scripts_path' is not a valid directory"
+		} else {
+			load_dir_scripts $or_load_scripts_path
+		}
+
+	}
+}
