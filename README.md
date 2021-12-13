@@ -1,11 +1,15 @@
 ## This is a compilation of some useful [OpenROAD](https://github.com/The-OpenROAD-Project/OpenROAD) scripts I've been using for the GUI
 
+
+![OpenROAD example screenshot of the Scripts menu](docs/scripts_menu_example.png)
+
 ---
 ### Setup 
 - Clone the repository to some local folder (ej: /home/user/openroad_useful_scripts )
 - Set the `OPENROAD_SCRIPTS_PATH` environment variable to the local [scripts/](scripts/) folder (ej: `~/export OPENROAD_SCRIPTS_PATH=/home/user/openroad_useful_scripts/scripts` )
 - Copy and rename the file [openroad-home_folder_script](openroad-home_folder_script) to `~/.openroad`
 - Launch `openroad -gui` 
+- You can find the loaded scripts on the Scripts menu of the app
 
 ---
 
