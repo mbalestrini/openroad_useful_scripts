@@ -1,7 +1,7 @@
-## This is a compilation of some useful OpenROAD scripts I've been using
+## This is a compilation of some useful [OpenROAD](https://github.com/The-OpenROAD-Project/OpenROAD) scripts I've been using for the GUI
 
 ### Environment
-The environment variable: `OPENROAD_SCRIPTS_PATH` should point to the repository [scripts](scripts/) folder
+The environment variable: `OPENROAD_SCRIPTS_PATH` should point to the repository's [scripts](scripts/) folder
 
 ### Startup script
 When OpenROAD starts it tries to load the `.openroad` file in your home folder. 
