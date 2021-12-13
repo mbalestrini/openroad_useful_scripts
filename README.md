@@ -5,8 +5,7 @@
 
 ---
 ### Setup
-
-directories  
+  
 - Clone the repository to some local folder (ej: /home/user/openroad_useful_scripts )
 - Set the `OPENROAD_SCRIPTS_PATH` environment variable to the local [scripts/](scripts/) folder (ej: `~/export OPENROAD_SCRIPTS_PATH=/home/user/openroad_useful_scripts/scripts` )
 - Copy and rename the file [openroad-home_folder_script](openroad-home_folder_script) to `~/.openroad`
