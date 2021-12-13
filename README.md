@@ -21,7 +21,7 @@ The provided `openroad-home_folder_script` script will execute all the scripts i
 
 Some scripts are helper functions and other are the scripts that create the menu items (using `create_menu_item`)
 
-If you want to add another menu options you should add another file to the script folder with the script that add the new menu options. Ej:
+If you want to add another menu options you should add another file to the [scripts/](scripts/) folder. Ej:  
 
 ```
 create_menu_item  -path "Scripts/Load working dir" -text "Caravel results" -script {
