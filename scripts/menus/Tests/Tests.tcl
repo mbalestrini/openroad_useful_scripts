@@ -32,24 +32,33 @@ create_menu_item  -path "Scripts/Tests" -text "Unplace fills, taps, diode, etc" 
 
     foreach c [get_cells FILLER*] {
         set inst [$current_block findInst [get_full_name $c]]
-        $inst setPlacementStatus UNPLACED
+        if {$inst != "NULL"} {
+            $inst setPlacementStatus UNPLACED
+        }
     }
 
+    
     foreach c [get_cells ANTENNA*] {
         set inst [$current_block findInst [get_full_name $c]]
-        $inst setPlacementStatus UNPLACED
+        if {$inst != "NULL"} {
+            $inst setPlacementStatus UNPLACED
+        }
     }
 
 
     foreach c [get_cells TAP*] {
         set inst [$current_block findInst [get_full_name $c]]
-        $inst setPlacementStatus UNPLACED
+        if {$inst != "NULL"} {
+            $inst setPlacementStatus UNPLACED
+        }
     }
 
 
     foreach c [get_cells PHY*] {
         set inst [$current_block findInst [get_full_name $c]]
-        $inst setPlacementStatus UNPLACED
+        if {$inst != "NULL"} {
+            $inst setPlacementStatus UNPLACED
+        }
     }
 }	
 
@@ -61,11 +70,11 @@ create_menu_item  -path "Scripts/Tests" -text "Select connected instances" -scri
     foreach term [$inst getITerms] {
         set net [$term getNet]
         set net_name [$net getName]
-            
+        set pin_name [[$term getMTerm] getName] 
 
-        if {$net_name!="VGND" && $net_name!="VPWR" && $net_name!="VNB" && $net_name!="VPB" && [$term getIoType]!="INOUT"} {
+        if {$pin_name!="VGND" && $pin_name!="VPWR" && $pin_name!="VNB" && $pin_name!="VPB" && [$term getIoType]!="INOUT"} {
 
-            puts [[$term getMTerm] getName] 
+            # puts [[$term getMTerm] getName] 
             #$term getIoType 
             #$term getNet
             puts "Net: $net_name"
@@ -77,9 +86,9 @@ create_menu_item  -path "Scripts/Tests" -text "Select connected instances" -scri
             gui::highlight_net $net_name 2
 
             foreach connected_term [$net getITerms] {
-                puts [$connected_term getIoType]
-                puts [[$connected_term getMTerm] getName]
-                puts [[$connected_term getInst] getName]
+                # puts [$connected_term getIoType]
+                # puts [[$connected_term getMTerm] getName]
+                # puts [[$connected_term getInst] getName]
                 select -type Inst -name [[$connected_term getInst] getName]
                 gui::highlight_inst [[$connected_term getInst] getName] 1
 

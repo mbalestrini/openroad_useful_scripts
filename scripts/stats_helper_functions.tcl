@@ -12,7 +12,7 @@ proc stats_placed_cells_count {} {
         if {[array exists cells_count($cell)]==0} {
             set cells_count($cell) 0
         }
-        if { [ [$block findInst [get_full_name $inst]] isPlaced ] == 1} {
+        if {[$block findInst [get_full_name $inst]]!="NULL" && [ [$block findInst [get_full_name $inst]] isPlaced ] == 1} {
             set cells_count($cell) [incr name($cell)]
             set total_placed_cells [incr total_placed_cells]
         }
