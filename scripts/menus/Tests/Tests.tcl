@@ -96,3 +96,25 @@ create_menu_item  -path "Scripts/Tests" -text "Select connected instances" -scri
         }
     }
 }
+
+
+create_menu_item  -path "Scripts/Tests" -text "Get selected Net capacitances" -script {   
+    set corner [lindex [sta::corners] 0]
+    set output_text ""
+
+    set cap_pin_max [[get_net [gui::get_selection_property Name ]] pin_capacitance $corner max]
+    set cap_pin_min [[get_net [gui::get_selection_property Name ]] pin_capacitance $corner min]
+    set cap_wire_max [[get_net [gui::get_selection_property Name ]] wire_capacitance $corner max]
+    set cap_wire_min [[get_net [gui::get_selection_property Name ]] wire_capacitance $corner min]
+    set cap_max [[get_net [gui::get_selection_property Name ]] capacitance $corner max]
+    set cap_min [[get_net [gui::get_selection_property Name ]] capacitance $corner min]
+    
+    append output_text "Pin Capacitance\n    max: [format "%.5e" $cap_pin_max]\n    min: [format "%.5e" $cap_pin_min]\n"
+    append output_text "Wire Capacitance\n    max: [format "%.5e" $cap_wire_max]\n    min: [format "%.5e" $cap_wire_min]\n"
+    append output_text "Capacitance\n    max: [format "%.5e" $cap_max]\n    min: [format "%.5e" $cap_min]\n"
+
+    puts "Net: [gui::get_selection_property Name ]\n"
+    puts $output_text
+    
+    gui::input_dialog "Capacitances - Net: [gui::get_selection_property Name ]" $output_text
+}
