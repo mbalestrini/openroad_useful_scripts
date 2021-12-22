@@ -189,7 +189,7 @@ proc load_intermediate_openlane_result {} {
 	
 	# FLOORPLAN DEF files
 	set def_options_str "$def_options_str\FLOORPLAN\n"
-	set defs [glob ./tmp/floorplan/*.def]
+	set defs [glob -nocomplain ./tmp/floorplan/*.def]
 	foreach def_file $defs {
 		set fbasename [file rootname [file tail $def_file]]
 		set def_options_str "$def_options_str$i: $fbasename\n"
@@ -200,7 +200,7 @@ proc load_intermediate_openlane_result {} {
 	set def_options_str "$def_options_str\n"
 	# PLACEMENT DEF files
 	set def_options_str "$def_options_str\PLACEMENT\n"
-	set defs [glob ./tmp/placement/*.def]
+	set defs [glob -nocomplain ./tmp/placement/*.def]
 	foreach def_file $defs {
 		set fbasename [file rootname [file tail $def_file]]
 		set def_options_str "$def_options_str$i: $fbasename\n"
@@ -211,7 +211,7 @@ proc load_intermediate_openlane_result {} {
 	set def_options_str "$def_options_str\n"
 	# ROUTING DEF files
 	set def_options_str "$def_options_str\ROUTING\n"
-	set defs [glob ./tmp/routing/*.def]
+	set defs [glob -nocomplain ./tmp/routing/*.def]
 	foreach def_file $defs {
 		set fbasename [file rootname [file tail $def_file]]
 		set def_options_str "$def_options_str$i: $fbasename\n"
